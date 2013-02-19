@@ -1,0 +1,5 @@
+Pipes have a few disadvantages in sorting. First of all, they cause the child processes to not be able to write to
+standard out or read from standard in. This means the child process cannot interact with the user during runtime. Another
+disadvantage of pipes is that they are unidirectional so multiple pipes are required for transferring data. Using pipes also
+requires many processes to be spawned and thus there is a large overhead and limited length of input data. A traditional merge
+sort requires very little overhead and scales much slower than this pipe method with increased input length.

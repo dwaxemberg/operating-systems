@@ -1,0 +1,16 @@
+Diego Waxemberg
+
+1. Since the child processes do not share the variables and each have their own copy, when
+printing out the values of the variables, each process prints the same values regardless of whether
+the other processes have decremented the variables or not.
+
+2. Using sleep is a bad technique to coordinate processes for a few reasons. First of all, you don't really know
+how long a certain process will take to perform a task so you have to just estimate higher than expected. This
+causes the program to execute much slower overall and since the main purpose of making multiple processes is to
+perform parallel tasks in order to do something faster, this is very undesirable.
+
+3. If we did not flush the stream, the other processes could write to the stream before it is cleared,
+causing multiple prints of the same strings. Although the actual execution of the program would not change, the prints would not
+reflect the program. Since the buffer is transferred to the children when a fork process is created, printing would
+contain everything that had already been printed before because it is still contained in the buffer. This would cause
+all of the childre to print the AGENT INFO, for example, every time printf is called.
